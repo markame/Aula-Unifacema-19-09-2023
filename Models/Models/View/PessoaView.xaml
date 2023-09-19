@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Models.View.PessoaView">
+    <ContentPage.Content>
+        <StackLayout>
+            <Frame BackgroundColor="Blue" Padding="24" CornerRadius="0">
+                <Label Text="Cadastro de Pessoas" HorizontalTextAlignment="Center" TextColor="White" FontSize="36"/>
+            </Frame>
+            <StackLayout Margin="10,10,10,10">
+                <Frame CornerRadius="5"  BorderColor="Blue">
+                    <StackLayout>
+                        <Label FontSize="Medium" FontAttributes="Bold" Text="Identificador:"></Label>
+                        <Entry x:Name="id"></Entry>
+                        <Label FontSize="Medium" FontAttributes="Bold" Text="Nome:"></Label>
+                        <Entry x:Name="nome"></Entry>
+                        <Label FontSize="Medium" FontAttributes="Bold" Text="Idade:"></Label>
+                        <Entry x:Name="idade"></Entry>
+                        <Label FontSize="Medium" FontAttributes="Bold" Text="Endereço:"></Label>
+                        <Entry x:Name="endere"></Entry>
+                        <Label FontSize="Medium" FontAttributes="Bold" Text="Data Nascimento:"></Label>
+                        <DatePicker x:Name="data"></DatePicker>
+                       
+
+                    </StackLayout>
+                </Frame>
+            </StackLayout>
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
