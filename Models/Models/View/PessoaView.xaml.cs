@@ -1,4 +1,4 @@
-﻿using Models.Model;
+using Models.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,16 +22,6 @@ namespace Models.View
             endere.Text = pessoa.EnderecoPessoa.ToString();
             data.Date = DateTime.ParseExact(pessoa.DataNasc,
                 "dd/MM/yyyy",System.Globalization.CultureInfo.InvariantCulture);
-        }
-
-        private void Button_Clicked(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Button_Clicked_1(object sender, EventArgs e)
-        {
-
         }
     }
 }
