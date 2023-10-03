@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SQLite;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using Xamarin.Forms;
@@ -13,6 +14,7 @@ namespace Models.Model
         string enderecoPessoa;
         string dataNasc;
 
+        [PrimaryKey, AutoIncrement]
         public int IdPessoa { get => idPessoa; set => idPessoa = value; }
         public string NomePessoa { get => nomePessoa; set => nomePessoa = value; }
         public int IdadePessoa { get => idadePessoa; set => idadePessoa = value; }
