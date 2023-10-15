@@ -10,21 +10,24 @@
         <StackLayout Margin="10,10,10,10">
             <Frame CornerRadius="5"  BorderColor="Blue">
                 <StackLayout>
-                    <Label FontSize="Medium" FontAttributes="Bold" Text="Identificador:"></Label>
-                    <Entry x:Name="id"></Entry>
-                    <Label FontSize="Medium" FontAttributes="Bold" Text="Nome:"></Label>
-                    <Entry x:Name="nome"></Entry>
-                    <Label FontSize="Medium" FontAttributes="Bold" Text="Idade:"></Label>
-                    <Entry x:Name="idade"></Entry>
-                    <Label FontSize="Medium" FontAttributes="Bold" Text="Endereço:"></Label>
-                    <Entry x:Name="endere"></Entry>
-                    <Label FontSize="Medium" FontAttributes="Bold" Text="Data Nascimento:"></Label>
-                    <DatePicker x:Name="data"></DatePicker>
+                   
+                    <Label TextColor="Black" FontSize="Medium" FontAttributes="Bold" Text="Nome:"></Label>
+                    <Entry Placeholder="Nome" PlaceholderColor="DimGray" TextColor="Black" x:Name="nome"></Entry>
+                    <Label TextColor="Black" FontSize="Medium" FontAttributes="Bold" Text="Idade:"></Label>
+                    <Entry Placeholder="Idade" PlaceholderColor="DimGray" TextColor="Black" x:Name="idade"></Entry>
+                    <Label TextColor="Black" FontSize="Medium" FontAttributes="Bold" Text="Endereço:"></Label>
+                    <Entry Placeholder="Endereço" PlaceholderColor="DimGray" TextColor="Black" x:Name="endere"></Entry>
+                    <Label TextColor="Black" FontSize="Medium" FontAttributes="Bold" Text="Data Nascimento:"></Label>
+                    <DatePicker TextColor="Black" x:Name="data"></DatePicker>
                     <Button Clicked="Button_Clicked" BorderColor="AliceBlue" 
                             BackgroundColor="Blue" TextColor="White" Text="Gravar">
                         
                     </Button>
-                    
+                    <Button Clicked="Button_Clicked_1" BorderColor="AliceBlue" 
+                            BackgroundColor="Blue" TextColor="White" Text="Registros">
+
+                    </Button>
+
                 </StackLayout>
             </Frame>
         </StackLayout>

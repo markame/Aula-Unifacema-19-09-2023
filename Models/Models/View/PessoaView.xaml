@@ -10,16 +10,9 @@
             <StackLayout Margin="10,10,10,10">
                 <Frame CornerRadius="5"  BorderColor="Blue">
                     <StackLayout>
-                        <Label FontSize="Medium" FontAttributes="Bold" Text="Identificador:"></Label>
-                        <Entry x:Name="id"></Entry>
-                        <Label FontSize="Medium" FontAttributes="Bold" Text="Nome:"></Label>
-                        <Entry x:Name="nome"></Entry>
-                        <Label FontSize="Medium" FontAttributes="Bold" Text="Idade:"></Label>
-                        <Entry x:Name="idade"></Entry>
-                        <Label FontSize="Medium" FontAttributes="Bold" Text="Endereço:"></Label>
-                        <Entry x:Name="endere"></Entry>
-                        <Label FontSize="Medium" FontAttributes="Bold" Text="Data Nascimento:"></Label>
-                        <DatePicker x:Name="data"></DatePicker>
+                        <ListView x:Name="lvDados">
+                            
+                        </ListView>
                        
 
                     </StackLayout>

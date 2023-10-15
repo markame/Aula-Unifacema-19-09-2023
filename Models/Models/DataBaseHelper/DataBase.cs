@@ -1,30 +1,28 @@
-﻿using Android.App;
-using Android.Content;
-using Android.OS;
-using Android.Runtime;
-using Android.Util;
-using Android.Views;
-using Android.Widget;
+﻿
 using Models.Model;
 using SQLite;
 using System;
+using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using static Android.Provider.ContactsContract.CommonDataKinds;
+using System.Collections.ObjectModel;
+using System.Security.Cryptography.X509Certificates;
+using System.Threading.Tasks;
 
-namespace Models.Droid.Resources.DataBaseHelper
+namespace Models.DataBaseHelper
 {
     public class DataBase
     {
             // Busaca da pasta atraves do método GetFolderPath
             string pasta = System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal);
             //Metodo para criar o banco de dados 
-            public bool CriarBancoDeDados()
+            public   bool CriarBancoDeDados()
             {
                 // Criação do Banco e tratamento de erros
                 try
                 {
+                if (System.IO.Path.Combine(pasta, "Pessoa.db").Contains("Pessoa.db")!=true)
+                {
+
 
                     using (var conexao = new SQLiteConnection(System.IO.Path.Combine(pasta, "Pessoa.db")))
                     {
@@ -32,11 +30,13 @@ namespace Models.Droid.Resources.DataBaseHelper
                         conexao.CreateTable<Pessoa>();
                         return true;
                     }
-                } catch (Exception ex)
+                 }
+               
+                return false;
+            } catch (Exception ex)
                 {
                     // Conjunto de Mensagens para que possamos saber que nosso banco foi malsucedido
-                    Log.Info("SQliteEX", ex.Message);
-                    Toast.MakeText(Application.Context,"Mensagem"+ ex.Message,ToastLength.Long).Show();
+                 
                     return false;
                 }
             }
@@ -58,25 +58,31 @@ namespace Models.Droid.Resources.DataBaseHelper
             }
             catch(SQLiteException ex)
             {
-                Log.Info("SQliteEX", ex.Message);
+             
                 return false;
             }
         }
 
-        public List<Pessoa> GetPessoa()
+        public ObservableCollection<Pessoa> GetPessoa()
         {
             // funçao para  listar todas as Pessoas no Banco de dados
             try
             {
                 using (var conexao = new SQLiteConnection(System.IO.Path.Combine(pasta, "Pessoa.db")))
                 {
-                    return conexao.Table<Pessoa>().ToList();
+                    List<Pessoa> listaModel = conexao.Table<Pessoa>().ToList();
+                   ObservableCollection<Pessoa> ObsModel = new ObservableCollection<Pessoa>(listaModel);
+                    return ObsModel;
+
+
+
+
                 }
 
             }
             catch (Exception ex)
             {
-                Log.Info("SQLiteEx", ex.Message);
+               
                 return null;
             }
            
@@ -97,7 +103,41 @@ namespace Models.Droid.Resources.DataBaseHelper
             }
             catch (SQLiteException ex)
             {
-                Log.Info("SQLiteEx", ex.Message);
+              
+                return false;
+            }
+        }
+        public bool DeletarPessoa(Pessoa pessoa)
+        {
+            try
+            {
+                using (var conexao = new SQLiteConnection(System.IO.Path.Combine(pasta, "Pessoa.db")))
+                {
+                    conexao.Delete(pessoa);
+                    return true;
+                }
+            }
+            catch (SQLiteException ex)
+            {
+            
+                return false;
+            }
+        }
+
+        public bool GetPessoabyId(int Id)
+        {
+            try
+            {
+                using (var conexao = new SQLiteConnection(System.IO.Path.Combine(pasta, "Pessoa.db")))
+                {
+                    conexao.Query<Pessoa>("SELECT * FROM Pessoa Where Id=?", Id);
+                 
+                    return true;
+                }
+            }
+            catch (SQLiteException ex)
+            {
+               
                 return false;
             }
         }

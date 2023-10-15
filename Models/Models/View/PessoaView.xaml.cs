@@ -1,6 +1,8 @@
+using Models.DataBaseHelper;
 using Models.Model;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,15 +15,21 @@ namespace Models.View
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class PessoaView : ContentPage
     {
-        public PessoaView(Pessoa pessoa)
+        
+        DataBase db;
+
+        public PessoaView()
         {
             InitializeComponent();
-            id.Text = pessoa.IdPessoa.ToString();
-            nome.Text = pessoa.NomePessoa.ToString();
-            idade.Text = pessoa.IdadePessoa.ToString();
-            endere.Text = pessoa.EnderecoPessoa.ToString();
-            data.Date = DateTime.ParseExact(pessoa.DataNasc,
-                "dd/MM/yyyy",System.Globalization.CultureInfo.InvariantCulture);
+            CarregarDados();
+
+
+
+        }
+        private void CarregarDados()
+        {
+
+            lvDados.ItemsSource = db.GetPessoa();
         }
     }
 }
